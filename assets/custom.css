@@ -1,0 +1,19 @@
+:root {
+    --nav-bg: #eceff1;
+    --nav-active: #1565d8;
+    --text-dark: #37474f;
+    --text-body: #455a64;
+}
+
+* {margin: 0; padding: 0; box-sizing: border-box;}
+html, body {height: 100%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(90deg, rgba(255,255,255,0.94) 0%, rgba(255,255,255,0.85) 45%, rgba(255,255,255,0.55) 70%, rgba(255,255,255,0.25) 100%),
+                url('') center/cover no-repeat;
+}
