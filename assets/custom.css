@@ -1,8 +1,11 @@
 :root {
-    --nav-bg: #eceff1;
-    --nav-active: #1565d8;
-    --text-dark: #37474f;
-    --text-body: #455a64;
+    --bg-main-1: #eceff1;
+    --bg-main-2: #94B4C1;
+    --bg-main-3: #547792;
+    --bg-main-4: #213448;
+    --text-dark: #213448;
+    --text-body: #547792;
+    --text-main: #eceff1;
 }
 
 * {margin: 0; padding: 0; box-sizing: border-box;}
@@ -16,4 +19,103 @@ html, body {height: 100%; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans
     overflow: hidden;
     background: linear-gradient(90deg, rgba(255,255,255,0.94) 0%, rgba(255,255,255,0.85) 45%, rgba(255,255,255,0.55) 70%, rgba(255,255,255,0.25) 100%),
                 url('') center/cover no-repeat;
+}
+
+nav.side-nav {
+    position: fixed;
+    top: 50%;
+    left: 32px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    z-index: 20;
+}
+
+.nav-item {
+    position: relative;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--bg-main-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-body);
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    transition: width .3s ease, background .3s ease, color .3s ease, box-shadow .3s ease;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.nav-item svg {
+    flex: 0 0 20px;
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+
+.nav-item .nav-label {
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0;
+    max-width: 0;
+    margin-left: 0;
+    transition: opacity .25s ease .05s, max-width .3s ease, margin-left .3s ease;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    width: 120px;
+    background: var(--bg-main-3);
+    color: var(--text-main);
+    box-shadow: 0 16px 16px rgba(21,101,216,0.35);
+    border-radius: 3%;
+}
+
+.nav-item:hover svg,
+.nav-item.active svg {
+    margin-left: 0;
+    transform: translateX(-50%);
+}
+
+.nav-item:hover .nav-label,
+.nav-item.active .nav-label {
+    opacity: 1;
+    max-width: 120px;
+    margin-left: 0;
+}
+
+.content {
+    position: relative;
+    z-index: 10;
+    padding-left: 160px;
+    max-width: 900px;
+}
+
+.myname {
+    font-size: 64px;
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1.05;
+    margin-bottom: 14px;
+    letter-spacing: -1px;
+}
+
+.who-ami {
+    font-size: 26px;
+    color: var(--text-body);
+    font-weight: 400;
+    margin-bottom: 26px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.im-a {
+    position: relative;
+    border-bottom: 2px solid var(--bg-main-4);
+    padding-bottom: 2px;
 }
