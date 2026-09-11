@@ -30,3 +30,20 @@ function tick() {
 }
 
 tick();
+
+const navigation = document.querySelector('.side-nav');
+const navigationToggle = document.querySelector('.nav-toggle');
+
+if (navigation && navigationToggle) {
+    navigationToggle.addEventListener('click', () => {
+        const isOpen = navigation.classList.toggle('is-open');
+        navigationToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!navigation.contains(event.target) && navigation.classList.contains('is-open')) {
+            navigation.classList.remove('is-open');
+            navigationToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+}

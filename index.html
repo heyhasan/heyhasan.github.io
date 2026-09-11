@@ -4,17 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hasan Basri</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,600;6..12,700;6..12,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/custom.css">
 </head>
 <body>
     <section class="hero">
-        <nav class="side-nav">
-            <a href="#" class="nav-item active" data-label="Home">
+        <nav class="side-nav" aria-label="Navigasi utama">
+            <button type="button" class="nav-item nav-toggle active" aria-expanded="false" aria-controls="more-navigation">
                 <svg width="50px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9.75c0-1.657 1.343-3 3-3s3 1.343 3 3c0 1.035-.524 1.947-1.32 2.486-.927.627-1.68 1.593-1.68 2.764v.75M12 18.75h.008v.008H12v-.008ZM21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                 </svg>
-                <span class="nav-label">Home</span>
-            </a>
+                <span class="nav-label">About</span>
+            </button>
+            <div class="nav-orbit" id="more-navigation">
             <a href="#" class="nav-item" data-label="Biography">
                 <svg width="50px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
@@ -33,6 +37,7 @@
                 </svg>
                 <span class="nav-label">Contact</span>
             </a>
+            </div>
         </nav>
 
         <div class="content">
