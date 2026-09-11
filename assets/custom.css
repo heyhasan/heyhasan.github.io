@@ -1,8 +1,5 @@
 :root {
-    --bg-main-1: #f4f6ff;
     --bg-main-3: #5663d2;
-    --text-dark: #1e293b;
-    --text-body: #667085;
     --text-main: #ffffff;
 }
 
@@ -21,7 +18,7 @@ html, body { height: 100%; font-family: 'Nunito Sans', 'Segoe UI', sans-serif; }
         #fff;
 }
 
-nav.side-nav {
+.floating-menu {
     position: fixed;
     z-index: 20;
     left: 50%;
@@ -31,12 +28,11 @@ nav.side-nav {
     transform: translateX(-50%);
 }
 
-.nav-item {
+.menu-button {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 8px;
-    color: var(--text-body);
     cursor: pointer;
     text-decoration: none;
     border: 1px solid #e0e6f7;
@@ -44,7 +40,7 @@ nav.side-nav {
     font-family: inherit;
 }
 
-.nav-toggle {
+.menu-primary {
     position: absolute;
     inset: 0;
     z-index: 3;
@@ -59,7 +55,7 @@ nav.side-nav {
     transition: transform .35s ease, box-shadow .35s ease;
 }
 
-.nav-toggle::before {
+.menu-primary::before {
     position: absolute;
     inset: -14px;
     z-index: -1;
@@ -70,19 +66,19 @@ nav.side-nav {
     transition: opacity .35s ease, transform .35s ease;
 }
 
-.nav-toggle:hover,
-.side-nav.is-open .nav-toggle {
+.menu-primary:hover,
+.floating-menu.is-open .menu-primary {
     transform: translateY(-3px);
     box-shadow: 0 18px 36px rgba(68, 83, 189, .4);
 }
 
-.side-nav.is-open .nav-toggle::before { opacity: 1; transform: scale(1.24); }
-.nav-item svg { width: 22px; height: 22px; flex: 0 0 22px; }
-.nav-label { font-size: 12px; font-weight: 800; line-height: 1; }
+.floating-menu.is-open .menu-primary::before { opacity: 1; transform: scale(1.24); }
+.menu-button svg { width: 22px; height: 22px; flex: 0 0 22px; }
+.menu-label { font-size: 12px; font-weight: 800; line-height: 1; }
 
-.nav-orbit { position: absolute; inset: 0; pointer-events: none; }
+.menu-items { position: absolute; inset: 0; pointer-events: none; }
 
-.nav-orbit::before {
+.menu-items::before {
     position: absolute;
     left: 50%;
     bottom: 50px;
@@ -98,10 +94,10 @@ nav.side-nav {
     transition: opacity .35s ease, transform .45s ease;
 }
 
-.side-nav.is-open .nav-orbit { pointer-events: auto; }
-.side-nav.is-open .nav-orbit::before { opacity: 1; transform: translateX(-50%) scale(1.05); }
+.floating-menu.is-open .menu-items { pointer-events: auto; }
+.floating-menu.is-open .menu-items::before { opacity: 1; transform: translateX(-50%) scale(1.05); }
 
-.nav-orbit .nav-item {
+.menu-submenu {
     position: absolute;
     left: 50%;
     bottom: 50px;
@@ -109,43 +105,41 @@ nav.side-nav {
     height: 76px;
     padding: 11px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #7794ec, #637de1);
     color: var(--text-main);
     box-shadow: 0 10px 24px rgba(73, 91, 190, .26);
     flex-direction: column;
     gap: 3px;
     opacity: 0;
     transform: translate(-50%, 16px) scale(.45);
-    transition: transform .48s cubic-bezier(.2, .9, .25, 1.2), opacity .25s ease, background .25s ease, color .25s ease;
+    transition: transform .48s cubic-bezier(.2, .9, .25, 1.2), opacity .25s ease, background .25s ease;
 }
 
-.nav-orbit .nav-label { font-size: 11px; }
+.menu-submenu .menu-label { font-size: 11px; }
 
-.nav-orbit .nav-item:nth-child(1) { background: linear-gradient(135deg, #6579df, #4f5fc6); }
-.nav-orbit .nav-item:nth-child(2) { background: linear-gradient(135deg, #7b95ee, #6680df); }
-.nav-orbit .nav-item:nth-child(3) { background: linear-gradient(135deg, #889ff1, #7189e5); }
+.menu-submenu:nth-child(1) { background: linear-gradient(135deg, #6579df, #4f5fc6); }
+.menu-submenu:nth-child(2) { background: linear-gradient(135deg, #7b95ee, #6680df); }
+.menu-submenu:nth-child(3) { background: linear-gradient(135deg, #889ff1, #7189e5); }
 
-.nav-orbit .nav-item:nth-child(1) { transition-delay: .02s; }
-.nav-orbit .nav-item:nth-child(2) { transition-delay: .08s; }
-.nav-orbit .nav-item:nth-child(3) { transition-delay: .14s; }
-.side-nav.is-open .nav-orbit .nav-item { opacity: 1; }
-.side-nav.is-open .nav-orbit .nav-item:nth-child(1) { transform: translate(calc(-50% - 122px), -88px) scale(1); }
-.side-nav.is-open .nav-orbit .nav-item:nth-child(2) { transform: translate(-50%, -144px) scale(1); }
-.side-nav.is-open .nav-orbit .nav-item:nth-child(3) { transform: translate(calc(-50% + 122px), -88px) scale(1); }
+.menu-submenu:nth-child(1) { transition-delay: .02s; }
+.menu-submenu:nth-child(2) { transition-delay: .08s; }
+.menu-submenu:nth-child(3) { transition-delay: .14s; }
+.floating-menu.is-open .menu-submenu { opacity: 1; }
+.floating-menu.is-open .menu-submenu:nth-child(1) { transform: translate(calc(-50% - 122px), -88px) scale(1); }
+.floating-menu.is-open .menu-submenu:nth-child(2) { transform: translate(-50%, -144px) scale(1); }
+.floating-menu.is-open .menu-submenu:nth-child(3) { transform: translate(calc(-50% + 122px), -88px) scale(1); }
 
-.nav-orbit .nav-item:hover,
-.nav-orbit .nav-item:focus-visible {
+.menu-submenu:hover,
+.menu-submenu:focus-visible {
     border-color: transparent;
-    background: linear-gradient(135deg, #89a4f4, #566fda);
     box-shadow: 0 14px 28px rgba(68, 83, 189, .38);
 }
 
-.nav-orbit .nav-item:nth-child(1):hover,
-.nav-orbit .nav-item:nth-child(1):focus-visible { background: linear-gradient(135deg, #778aeb, #596bd2); }
-.nav-orbit .nav-item:nth-child(2):hover,
-.nav-orbit .nav-item:nth-child(2):focus-visible { background: linear-gradient(135deg, #8ba4f5, #7089e8); }
-.nav-orbit .nav-item:nth-child(3):hover,
-.nav-orbit .nav-item:nth-child(3):focus-visible { background: linear-gradient(135deg, #9bb0f6, #7f96eb); }
+.menu-submenu:nth-child(1):hover,
+.menu-submenu:nth-child(1):focus-visible { background: linear-gradient(135deg, #778aeb, #596bd2); }
+.menu-submenu:nth-child(2):hover,
+.menu-submenu:nth-child(2):focus-visible { background: linear-gradient(135deg, #8ba4f5, #7089e8); }
+.menu-submenu:nth-child(3):hover,
+.menu-submenu:nth-child(3):focus-visible { background: linear-gradient(135deg, #9bb0f6, #7f96eb); }
 
 .content {
     position: relative;
@@ -188,7 +182,7 @@ nav.side-nav {
             #fff;
     }
 
-    nav.side-nav {
+    .floating-menu {
         bottom: max(20px, env(safe-area-inset-bottom));
         transform: translateX(-50%) scale(.82);
         transform-origin: bottom center;
@@ -200,7 +194,7 @@ nav.side-nav {
 }
 
 @media (max-width: 360px) {
-    nav.side-nav { transform: translateX(-50%) scale(.7); }
+    .floating-menu { transform: translateX(-50%) scale(.7); }
     .hero { padding-inline: 18px; }
 }
 

@@ -31,8 +31,8 @@ function tick() {
 
 tick();
 
-const navigation = document.querySelector('.side-nav');
-const navigationToggle = document.querySelector('.nav-toggle');
+const navigation = document.querySelector('.floating-menu');
+const navigationToggle = document.querySelector('.menu-primary');
 
 if (navigation && navigationToggle) {
     navigationToggle.addEventListener('click', () => {
